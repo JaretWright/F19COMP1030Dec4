@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -29,6 +30,22 @@ public class FileExamples {
 
                 for (int i=0; i<directoryElements.length; i++)
                     System.out.println("    "+directoryElements[i].getName());
+            }
+            else if (file.isFile())
+            {
+                try {
+                    Scanner fileToRead = new Scanner(file);
+
+                    System.out.println("\nHere is the contents of the file:");
+                    while(fileToRead.hasNext())
+                    {
+                        System.out.println(fileToRead.nextLine());
+                    }
+
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
             }
         }
     }
